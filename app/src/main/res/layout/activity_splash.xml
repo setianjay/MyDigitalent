@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".presentations.SplashActivity">
+
+    <ImageView
+        android:id="@+id/iv_app"
+        android:layout_width="231dp"
+        android:layout_height="231dp"
+        android:contentDescription="@string/app_name"
+        android:src="@drawable/logo_digitalent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tv_subtitle_1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/montserrat_regular"
+        android:text="@string/upgrade_your_skill_in_digital_era"
+        android:textColor="@color/gray"
+        android:textSize="12sp"
+        android:layout_marginTop="19dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/iv_app" />
+
+    <TextView
+        android:id="@+id/tv_subtitle_2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/montserrat_regular"
+        android:text="@string/by_participating_in_the_trainings_with_digitalent"
+        android:textColor="@color/gray"
+        android:textSize="12sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tv_subtitle_1" />
+
+<!--    <TextView-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:fontFamily="@font/montserrat_bold"-->
+<!--        android:text="Digitalent"-->
+<!--        android:layout_marginStart="1dp"-->
+<!--        android:textColor="@color/crystal_blue"-->
+<!--        android:textSize="12sp"-->
+<!--        app:layout_constraintStart_toEndOf="@id/subtitle_2"-->
+<!--        app:layout_constraintTop_toTopOf="@id/subtitle_2"-->
+<!--        app:layout_constraintBottom_toBottomOf="@id/subtitle_2"/>-->
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">MyDigitalent</string>
+    <string name="upgrade_your_skill_in_digital_era">Upgrade your skill in Digital Era</string>
+    <string name="by_participating_in_the_trainings_with_digitalent">by participating in the trainings with <b>Digitalent</b></string>
 </resources>
