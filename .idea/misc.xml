@@ -3,6 +3,9 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Budel/Belajar/Coding/Android/DigitalTalent/MyDigitalent/app/src/main/res/drawable/bg_custom_input.xml" value="0.1" />
+        <entry key="..\:/Budel/Belajar/Coding/Android/DigitalTalent/MyDigitalent/app/src/main/res/drawable/ic_error_16.xml" value="0.1125" />
+        <entry key="..\:/Budel/Belajar/Coding/Android/DigitalTalent/MyDigitalent/app/src/main/res/layout/activity_register.xml" value="0.264" />
         <entry key="..\:/Budel/Belajar/Coding/Android/DigitalTalent/MyDigitalent/app/src/main/res/layout/activity_splash.xml" value="0.264" />
       </map>
     </option>

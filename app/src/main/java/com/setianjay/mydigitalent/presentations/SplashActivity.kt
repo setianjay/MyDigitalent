@@ -1,9 +1,13 @@
 package com.setianjay.mydigitalent.presentations
 
+import android.Manifest
+import android.content.Intent
+import android.content.pm.PackageManager
 import android.os.Bundle
-import android.os.Handler
-import android.widget.Toast
+import android.view.animation.Animation
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.app.ActivityCompat
+import androidx.core.content.ContextCompat
 import com.setianjay.mydigitalent.databinding.ActivitySplashBinding
 import com.setianjay.mydigitalent.utils.Animations
 
@@ -16,24 +20,64 @@ class SplashActivity : AppCompatActivity() {
         binding = ActivitySplashBinding.inflate(layoutInflater)
         setContentView(binding.root)
         initAnimation()
-        moveToLoginScreen()
     }
 
-    private fun initAnimation(){
+    private fun initAnimation() {
         binding.apply {
             ivApp.startAnimation(animations.logoAtSplashScreenAnimation())
             tvSubtitle1.startAnimation(animations.subtitleAtSplashScreenAnimation())
-            tvSubtitle2.startAnimation(animations.subtitleAtSplashScreenAnimation())
+
+            val endOfAnimation = animations.subtitleAtSplashScreenAnimation()
+            endOfAnimation.setAnimationListener(object : Animation.AnimationListener {
+                override fun onAnimationStart(p0: Animation?) {
+                }
+
+                override fun onAnimationRepeat(p0: Animation?) {
+                }
+
+                override fun onAnimationEnd(p0: Animation?) {
+                    checkPermissionApp()
+                }
+
+            })
+            tvSubtitle2.startAnimation(endOfAnimation)
         }
     }
 
-    private fun moveToLoginScreen(){
-        Handler().postDelayed({
-            Toast.makeText(this, "Move to activity login", Toast.LENGTH_SHORT).show()
-        }, SPLASH_DURATION)
+    private fun moveToLoginScreen() {
+        Intent(this, RegisterActivity::class.java).also {
+            startActivity(it)
+            finish()
+        }
     }
 
-    companion object{
-        private const val SPLASH_DURATION = 1800L
+    private fun checkPermissionApp() {
+        val locationPermission = Manifest.permission.ACCESS_FINE_LOCATION
+
+        if (ActivityCompat.checkSelfPermission(this, locationPermission) != PackageManager.PERMISSION_GRANTED
+        ) {
+            requestPermissions(arrayOf(locationPermission), APP_PERMISSION)
+        } else {
+            moveToLoginScreen()
+        }
+    }
+
+    override fun onRequestPermissionsResult(
+        requestCode: Int,
+        permissions: Array<out String>,
+        grantResults: IntArray
+    ) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults)
+        if(requestCode == APP_PERMISSION){
+            if(grantResults[0] == PackageManager.PERMISSION_GRANTED){
+                moveToLoginScreen()
+            }else{
+                checkPermissionApp()
+            }
+        }
+    }
+
+    companion object {
+        private const val APP_PERMISSION = 0
     }
 }

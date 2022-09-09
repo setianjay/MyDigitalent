@@ -2,4 +2,21 @@
     <string name="app_name">MyDigitalent</string>
     <string name="upgrade_your_skill_in_digital_era">Upgrade your skill in Digital Era</string>
     <string name="by_participating_in_the_trainings_with_digitalent">by participating in the trainings with <b>Digitalent</b></string>
+    <string name="choose_photo">Choose Photo</string>
+    <string name="username">Username</string>
+    <string name="password">Password</string>
+    <string name="phone">Phone</string>
+    <string name="gender">Gender</string>
+    <string name="male">Male</string>
+    <string name="female">Female</string>
+    <string name="address">Address</string>
+    <string name="register">Register</string>
+    <string name="form_input_empty">%s cannot be empty</string>
+    <string name="enter_your_username_in_here">Enter your username in here</string>
+    <string name="enter_your_address_in_here">Enter your address in here</string>
+    <string name="enter_your_phone_number_in_here">Enter your phone number in here</string>
+    <string name="enter_your_password_in_here">Enter your password in here</string>
+    <string name="user_has_already_register">User has already register</string>
+    <string name="input_process_error">Input process error, please check the code</string>
+    <string name="user_successfully_register">User has successfully register</string>
 </resources>
