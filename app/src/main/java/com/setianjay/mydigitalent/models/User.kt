@@ -1,5 +1,6 @@
 package com.setianjay.mydigitalent.models
 
+import android.graphics.Bitmap
 import com.setianjay.mydigitalent.enums.Gender
 
 data class User(
@@ -9,7 +10,7 @@ data class User(
     val phone: String,
     val gender: Gender,
     val password: String,
-    val photoPath: String,
+    val photo: Bitmap,
     val location: Location
 ){
     data class Location(val latitude: String, val longitude: String)

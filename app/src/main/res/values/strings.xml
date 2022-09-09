@@ -19,4 +19,14 @@
     <string name="user_has_already_register">User has already register</string>
     <string name="input_process_error">Input process error, please check the code</string>
     <string name="user_successfully_register">User has successfully register</string>
+    <string name="welcome_back_to_digitalent">Welcome Back to <b>Digitalent</b></string>
+    <string name="dont_have_an_account_register">Don\'t have an account? <b>Register</b></string>
+    <string name="login">Login</string>
+    <string name="password_does_not_match">Password does not match, please try again</string>
+    <string name="user_dont_have_an_account">You don\'t have an account, please register first</string>
+    <string name="info_address"><b>Address</b>: %s</string>
+    <string name="info_phone"><b>Phone</b>: %s</string>
+    <string name="info_latitude"><b>Latitude</b>: %s</string>
+    <string name="info_longitude"><b>Longitude</b>: %s</string>
+    <string name="logout">logout</string>
 </resources>

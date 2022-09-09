@@ -17,7 +17,11 @@
         android:theme="@style/Theme.MyDigitalent"
         tools:targetApi="31">
         <activity
+            android:name=".presentations.LoginActivity"
+            android:exported="false" />
+        <activity
             android:name=".presentations.RegisterActivity"
+            android:parentActivityName=".presentations.LoginActivity"
             android:exported="false" />
         <activity
             android:name=".presentations.SplashActivity"
@@ -29,7 +33,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".MainActivity"
+            android:name=".presentations.HomeActivity"
             android:exported="false" />
     </application>
 

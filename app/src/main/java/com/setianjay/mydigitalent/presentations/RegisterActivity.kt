@@ -3,7 +3,7 @@ package com.setianjay.mydigitalent.presentations
 import android.Manifest
 import android.content.Intent
 import android.content.pm.PackageManager
-import android.net.Uri
+import android.graphics.Bitmap
 import android.os.Bundle
 import android.view.View
 import android.widget.Toast
@@ -26,24 +26,20 @@ import kotlinx.coroutines.*
 class RegisterActivity : AppCompatActivity(), View.OnClickListener {
     private val binding by lazy { ActivityRegisterBinding.inflate(layoutInflater) }
     private val job = Job()
-    private val coroutineScope = CoroutineScope(Dispatchers.IO + job)
+    private val coroutineScope by lazy { CoroutineScope(Dispatchers.IO + job) }
 
     private var latitude: String = ""
     private var longitude: String = ""
-    private var selectedPhotoUri: Uri? = null
+    private var selectedPhoto: Bitmap? = null
     private val sqliteHelper by lazy { SqliteHelper(this@RegisterActivity) }
 
     private val resultLauncher =
         registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
             result.data?.let {
-                selectedPhotoUri = it.data
-                try {
-                    selectedPhotoUri?.let { uri ->
-                        val bitmap = ViewUtil.getBitmapFromUri(this.contentResolver, uri)
-                        binding.ivUser.setImageBitmap(bitmap)
-                    }
-                } catch (e: Exception) {
-                    e.printStackTrace()
+                val selectedPhotoUri = it.data
+                selectedPhotoUri?.let { uri ->
+                    selectedPhoto = ViewUtil.getBitmapFromUri(this.contentResolver, uri)
+                    binding.ivUser.setImageBitmap(selectedPhoto)
                 }
             }
         }
@@ -152,9 +148,8 @@ class RegisterActivity : AppCompatActivity(), View.OnClickListener {
 
 
                 // all condition passed
-                if (isAllPassed && latitude.isNotBlank() && longitude.isNotBlank()) {
+                if (isAllPassed && latitude.isNotBlank() && longitude.isNotBlank() && selectedPhoto != null) {
                     // get all value
-                    val photoUri = selectedPhotoUri.toString()
                     val username = binding.etUsername.text.toString().lowercase().trim()
                     val address = binding.etAddress.text.toString().trim()
                     val phone = binding.etPhone.text.toString().trim()
@@ -177,24 +172,24 @@ class RegisterActivity : AppCompatActivity(), View.OnClickListener {
                                 phone,
                                 gender,
                                 password,
-                                photoUri,
+                                selectedPhoto as Bitmap,
                                 location
                             )
 
                             if (sqliteHelper.addUser(userArg) != -1L) {
                                 message = getString(R.string.user_successfully_register)
                                 result = REGISTER_SUCCESS
-                            }else{
+                            } else {
                                 message = getString(R.string.input_process_error)
                             }
                         } else {
                             message = getString(R.string.user_has_already_register)
                         }
 
-                        withContext(Dispatchers.Main){
+                        withContext(Dispatchers.Main) {
                             Toast.makeText(this@RegisterActivity, message, Toast.LENGTH_LONG).show()
-                            if(result == 0){
-                                Intent(this@RegisterActivity, SplashActivity::class.java).also {
+                            if (result == REGISTER_SUCCESS) {
+                                Intent(this@RegisterActivity, LoginActivity::class.java).also {
                                     startActivity(it)
                                 }
                             }

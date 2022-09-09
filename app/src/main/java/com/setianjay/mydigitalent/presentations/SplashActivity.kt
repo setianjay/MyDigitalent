@@ -7,7 +7,6 @@ import android.os.Bundle
 import android.view.animation.Animation
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
-import androidx.core.content.ContextCompat
 import com.setianjay.mydigitalent.databinding.ActivitySplashBinding
 import com.setianjay.mydigitalent.utils.Animations
 
@@ -45,7 +44,7 @@ class SplashActivity : AppCompatActivity() {
     }
 
     private fun moveToLoginScreen() {
-        Intent(this, RegisterActivity::class.java).also {
+        Intent(this, LoginActivity::class.java).also {
             startActivity(it)
             finish()
         }
